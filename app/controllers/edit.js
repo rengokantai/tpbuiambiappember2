@@ -8,11 +8,11 @@ export default Ember.Controller.extend({
         ()=>console.log('did not save')
         )
     },
-    cancel(){
-      //console.log('c');
-      this.get('model').deleteRecord();
-      //this.transitionToRoute('calendars');
-      return true;
+    delete(){
+      this.get('model').destroyRecord().then(
+        ()=>this.transitionToRoute('calendars'),
+        ()=>console.log('did not delete')
+        )
     }
   }
 });
