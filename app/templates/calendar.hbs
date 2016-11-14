@@ -1,1 +1,9 @@
-{{outlet}}
+{{#link-to "calendars" class='btn'}}back{{/link-to}}
+<h1>{{model.name}}</h1>
+<div>
+  <h2>
+    {{monthName}}
+  </h2>
+
+  {{month-view days=model.days}}
+</div>
