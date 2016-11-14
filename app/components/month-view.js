@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 
 function getValue(days,dayObj){
   days.filter(day=>day.get('date')===dayObj.date)[0];
@@ -9,7 +10,8 @@ function getValue(days,dayObj){
 
 export default Ember.Component.extend({
   weeks:Ember.computed('days',function(){
-   this.get('days').then(function(days){
+    return DS.PromiseArray.create({
+      promise:   this.get('days').then(function(days){
           var day = moment().date(1);
     var currMonth = day.month();
     if(day.day()!==0){
@@ -31,6 +33,8 @@ export default Ember.Component.extend({
     }
     return weeks;
     })
+    })
+
 
   })
 });
